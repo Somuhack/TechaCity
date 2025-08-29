@@ -6,8 +6,12 @@ const helmet = require('helmet');
 const app = express();
 const sendData = require("./userController");
 const UserContact = require("./ValidationInput/Inputvalid");
-
-app.use(cors());
+const corsOptions = {
+  origin: "https://techacity.in", // allow only this domain
+  methods: ["GET", "POST", "PUT", "DELETE"], // allowed methods
+  credentials: true, // if you need cookies, Authorization headers, etc.
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(helmet());
 
